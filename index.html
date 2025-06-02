@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Birthday Quiz</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f5f5f5;
+        }
+        button {
+            background-color: red;
+            color: white;
+            font-size: 30px;
+            padding: 20px 40px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: darkred;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <button id="answerButton" onclick="playSound()">ОТВЕТИТЬ</button>
+    </div>
+
+    <script>
+        // List of sounds (replace with actual URLs to your sound files)
+        const sounds = {
+            cow: './sounds/cow.mp3',
+            fart: './sounds/fart.mp3',
+            fart: './sounds/fart.mp3',
+        };
+
+        function getQueryParam() {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get('sound');
+        }
+
+        function playSound() {
+            const sound = getQueryParam();
+            if (sounds[sound]) {
+                const audio = new Audio(sounds[sound]);
+                audio.play();
+            } else {
+                alert('Sound not found!');
+            }
+        }
+    </script>
+</body>
+</html>
